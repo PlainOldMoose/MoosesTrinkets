@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class TrinketTest {
-
     Trinket t;
 
     @BeforeEach
@@ -14,17 +13,20 @@ class TrinketTest {
         t = new Trinket();
     }
 
+    // Basic construction test
     @Test
     void trinketConstructionTest() {
         assertNotNull(t);
     }
 
+    // Display name test
     @Test
     void displayNameTest() {
         t.setDisplayName("Hello World!");
         assertEquals(t.getDisplayName(), "Hello World!");
     }
 
+    // ID test
     @Test
     void idTest() {
         t.setID(5);
