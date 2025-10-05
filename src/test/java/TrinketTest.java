@@ -24,4 +24,10 @@ class TrinketTest {
         t.setDisplayName("Hello World!");
         assertEquals(t.getDisplayName(), "Hello World!");
     }
+
+    @Test
+    void idTest() {
+        t.setID(5);
+        assertEquals(t.getID(), 5);
+    }
 }
