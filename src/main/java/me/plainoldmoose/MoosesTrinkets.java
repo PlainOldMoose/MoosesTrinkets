@@ -2,7 +2,11 @@ package me.plainoldmoose;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class moosesTrinkets extends JavaPlugin {
+public class MoosesTrinkets extends JavaPlugin {
+
+    public static MoosesTrinkets getInstance() {
+        return getPlugin(MoosesTrinkets.class);
+    }
 
     @Override
     public void onEnable() {

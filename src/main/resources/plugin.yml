@@ -1,4 +1,4 @@
 name: MoosesTrinkets
 version: '0.1'
-main: me.plainoldmoose.moosesTrinkets
+main: me.plainoldmoose.MoosesTrinkets
 api-version: '1.21'
