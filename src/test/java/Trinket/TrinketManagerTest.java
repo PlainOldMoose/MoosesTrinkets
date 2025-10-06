@@ -34,7 +34,9 @@ class TrinketManagerTest {
     @Test
     void managerAddTest() {
         Trinket t = new Trinket("trinket", Material.DIAMOND);
+        Trinket t1 = new Trinket("another_trinket", Material.DIAMOND);
         tm.add(t);
         assertEquals(t, tm.get("trinket"));
+        assertNotEquals(t1, tm.get("trinket"));
     }
 }
