@@ -1,8 +1,12 @@
 package me.plainoldmoose.trinket;
 
 import me.plainoldmoose.MoosesTrinkets;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 /**
  * Represents a Trinket.
@@ -14,8 +18,24 @@ public class Trinket {
     private int id;
     private ItemStack item;
 
-    public Trinket(String displayName) {
-        key = new NamespacedKey("moosestrinkets", displayName);
+    public Trinket(String displayName, Material baseMaterial) {
+        this.displayName = displayName;
+        this.key = new NamespacedKey("moosestrinkets", displayName);
+        this.item = applyNamespaceKey(displayName, baseMaterial);
+    }
+
+    private ItemStack applyNamespaceKey(String displayName, Material material) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        PersistentDataContainer data = meta.getPersistentDataContainer();
+
+        data.set(key, PersistentDataType.STRING, displayName);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public NamespacedKey getKey() {
+        return key;
     }
 
     /**

@@ -1,6 +1,10 @@
 import me.plainoldmoose.trinket.Trinket;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +20,7 @@ class TrinketTest {
     @BeforeEach
     void setUp() {
         server = MockBukkit.mock();
-        t = new Trinket("trinket");
+        t = new Trinket("trinket", Material.DIAMOND);
     }
 
     @AfterEach
@@ -47,7 +51,6 @@ class TrinketTest {
     // Internal ItemStack
     @Test
     void getItemTest() {
-        assertNull(t.getItem());
         ItemStack item = new ItemStack(Material.DIAMOND, 1);
         t.setItem(item);
         assertEquals(item, t.getItem());
@@ -55,6 +58,10 @@ class TrinketTest {
 
     @Test
     void isTrinketTest() {
+        ItemMeta meta = t.getItem().getItemMeta();
+        PersistentDataContainer data = meta.getPersistentDataContainer();
 
+        String id = data.get(new NamespacedKey("moosestrinkets", "trinket"), PersistentDataType.STRING);
+        assertEquals("trinket", id);
     }
 }
