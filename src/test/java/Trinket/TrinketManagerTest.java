@@ -18,17 +18,16 @@ class TrinketManagerTest {
     @BeforeEach
     void setUp() {
         server = MockBukkit.mock();
-        tm = new TrinketManager();
+        tm = TrinketManager.getInstance();
     }
 
     @AfterEach
     void tearDown() {
         MockBukkit.unmock();
     }
-    
+
     @Test
     void managerConstructionTest() {
-        tm = new TrinketManager();
         assertNotNull(tm);
     }
 
