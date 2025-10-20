@@ -1,5 +1,6 @@
 package me.plainoldmoose;
 
+import me.plainoldmoose.command.TrinketCommandHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MoosesTrinkets extends JavaPlugin {
@@ -10,7 +11,7 @@ public class MoosesTrinkets extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        getCommand("trinkets").setExecutor(new TrinketCommandHandler());
 
     }
 
