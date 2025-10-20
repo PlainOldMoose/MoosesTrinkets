@@ -2,3 +2,8 @@ name: MoosesTrinkets
 version: '0.1'
 main: me.plainoldmoose.MoosesTrinkets
 api-version: '1.21'
+commands:
+  trinket:
+    description: "<placeholder>"
+    usage: /trinket
+    aliases: [ trinkets ]
