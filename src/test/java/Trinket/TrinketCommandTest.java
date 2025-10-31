@@ -38,8 +38,12 @@ class TrinketCommandTest {
     }
 
     @Test
-    void TrinketCommandTest() {
+    void TrinketCommandExists() {
         assertNotNull(server.getPluginCommand("trinkets"));
+    }
+
+    @Test
+    void TrinketCommandRunTest() {
         boolean result = tch.onCommand(player, server.getPluginCommand("trinkets"), "trinkets", new String[]{}
         );
 
@@ -48,17 +52,15 @@ class TrinketCommandTest {
 
     @Test
     void TrinketGiveCommandTest() {
-        assertNotNull(server.getPluginCommand("trinkets"));
-        boolean result = tch.onCommand(player, server.getPluginCommand("trinkets"), "trinkets", new String[]{"give", "hello"}
-        );
+        tch.onCommand(player, server.getPluginCommand("trinkets"), "trinkets", new String[]{"give", "hello"}); // Mock the player issuing /trinkets give hello
 
+        // Check inventory was given an item
         Inventory inv = player.getInventory();
         assertFalse(inv.isEmpty());
-        ItemStack i = inv.getItem(0);
 
+        // Check item belongs to moosestrinkets
+        ItemStack i = inv.getItem(0);
         PersistentDataContainer data = i.getItemMeta().getPersistentDataContainer();
-        Set<NamespacedKey> keys = data.getKeys();
-        assertTrue(keys.contains("moosestrinkets"));
-        assertTrue(result);
+        assertTrue(data.has(new NamespacedKey("moosestrinkets", "hello")));
     }
 }
