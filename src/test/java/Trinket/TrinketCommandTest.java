@@ -36,9 +36,9 @@ class TrinketCommandTest {
     @Test
     void TrinketCommandTest() {
         assertNotNull(server.getPluginCommand("trinket"));
-//        boolean result = tch.onCommand(player, server.getPluginCommand("trinket"), "trinkets", new String[]{}
-//        );
-//
-//        assertTrue(result);
+        boolean result = tch.onCommand(player, server.getPluginCommand("trinket"), "trinkets", new String[]{}
+        );
+
+        assertTrue(result);
     }
 }
