@@ -2,17 +2,21 @@ package Trinket;
 
 import me.plainoldmoose.MoosesTrinkets;
 import me.plainoldmoose.command.TrinketCommandHandler;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.plugin.Plugin;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockbukkit.mockbukkit.MockBukkit;
 import org.mockbukkit.mockbukkit.ServerMock;
-import org.mockbukkit.mockbukkit.command.CommandMapMock;
 import org.mockbukkit.mockbukkit.entity.PlayerMock;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class TrinketCommandTest {
     TrinketCommandHandler tch = new TrinketCommandHandler();
@@ -35,10 +39,26 @@ class TrinketCommandTest {
 
     @Test
     void TrinketCommandTest() {
-        assertNotNull(server.getPluginCommand("trinket"));
-        boolean result = tch.onCommand(player, server.getPluginCommand("trinket"), "trinkets", new String[]{}
+        assertNotNull(server.getPluginCommand("trinkets"));
+        boolean result = tch.onCommand(player, server.getPluginCommand("trinkets"), "trinkets", new String[]{}
         );
 
+        assertTrue(result);
+    }
+
+    @Test
+    void TrinketGiveCommandTest() {
+        assertNotNull(server.getPluginCommand("trinkets"));
+        boolean result = tch.onCommand(player, server.getPluginCommand("trinkets"), "trinkets", new String[]{"give", "hello"}
+        );
+
+        Inventory inv = player.getInventory();
+        assertFalse(inv.isEmpty());
+        ItemStack i = inv.getItem(0);
+
+        PersistentDataContainer data = i.getItemMeta().getPersistentDataContainer();
+        Set<NamespacedKey> keys = data.getKeys();
+        assertTrue(keys.contains("moosestrinkets"));
         assertTrue(result);
     }
 }
