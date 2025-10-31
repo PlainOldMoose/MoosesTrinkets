@@ -48,7 +48,8 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
         }
 
         TrinketManager tm = TrinketManager.getInstance();
-        player.give(tm.get(args[1]).getItem());
+        player.getInventory().addItem(tm.get(args[1]).getItem());
+//        player.give(tm.get(args[1]).getItem()); - not supported by MockBukkit for testing
     }
 
     @Override
