@@ -15,6 +15,9 @@ import javax.xml.transform.OutputKeys;
 import java.util.List;
 
 public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
+
+    private final String USAGE = "Usage: /trinkets <give> <player> <trinket_name>";
+
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         if (!(commandSender instanceof Player)) {
@@ -24,7 +27,7 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
         Player player = (Player) commandSender;
 
         if (args.length == 0) {
-            player.sendMessage(ChatColor.RED + "Usage: /trinkets <give> <trinket>");
+            player.sendMessage(ChatColor.RED + USAGE);
             return true;
         }
 
@@ -33,14 +36,14 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
                 handleGive(player, args);
                 return true;
             default:
-                player.sendMessage(ChatColor.RED + "Usage: /trinkets <give> <trinket>");
+                player.sendMessage(ChatColor.RED + USAGE);
                 return true;
         }
     }
 
     private void handleGive(Player player, String[] args) {
-        if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Usage: /trinkets give <trinket>");
+        if (args.length != 2) {
+            player.sendMessage(ChatColor.RED + USAGE);
             return;
         }
 
