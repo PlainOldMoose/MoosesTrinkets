@@ -24,7 +24,7 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
         Player player = (Player) commandSender;
 
         if (args.length == 0) {
-            player.sendMessage(ChatColor.RED + "Usage: /trinket <give> <trinket>");
+            player.sendMessage(ChatColor.RED + "Usage: /trinkets <give> <trinket>");
             return true;
         }
 
@@ -33,7 +33,7 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
                 handleGive(player, args);
                 return true;
             default:
-                player.sendMessage(ChatColor.RED + "Usage: /trinket <give> <trinket>");
+                player.sendMessage(ChatColor.RED + "Usage: /trinkets <give> <trinket>");
                 return true;
         }
     }

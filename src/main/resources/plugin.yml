@@ -5,5 +5,4 @@ api-version: '1.21'
 commands:
   trinket:
     description: "<placeholder>"
-    usage: /trinket
-    aliases: [ trinkets ]
+    usage: /trinkets
