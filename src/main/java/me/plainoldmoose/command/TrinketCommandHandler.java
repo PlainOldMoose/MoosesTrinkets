@@ -25,6 +25,7 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
 
         if (args.length == 0) {
             player.sendMessage(ChatColor.RED + "Usage: /trinket <give> <trinket>");
+            return true;
         }
 
         switch (args[0].toLowerCase()) {
