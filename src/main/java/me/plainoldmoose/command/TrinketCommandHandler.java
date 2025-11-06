@@ -16,7 +16,14 @@ import java.util.List;
 
 public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
 
-    private final String USAGE = "Usage: /trinkets <give> <player> <trinket_name>";
+    private static final String USAGE = "Usage: /trinkets <give> <player> <trinket_name>";
+
+    private final TrinketCommandActualiser actualiser;
+
+    public TrinketCommandHandler(TrinketCommandActualiser actualiser) {
+        this.actualiser = actualiser;
+    }
+
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
@@ -33,23 +40,12 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
 
         switch (args[0].toLowerCase()) {
             case "give":
-                handleGive(player, args);
+                actualiser.giveTrinket(player, args);
                 return true;
             default:
                 player.sendMessage(ChatColor.RED + USAGE);
                 return true;
         }
-    }
-
-    private void handleGive(Player player, String[] args) {
-        if (args.length != 2) {
-            player.sendMessage(ChatColor.RED + USAGE);
-            return;
-        }
-
-        TrinketManager tm = TrinketManager.getInstance();
-        player.getInventory().addItem(tm.get(args[1]).getItem());
-//        player.give(tm.get(args[1]).getItem()); - not supported by MockBukkit for testing
     }
 
     @Override
