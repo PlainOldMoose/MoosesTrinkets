@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.xml.transform.OutputKeys;
 import java.util.List;
 
-public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
+public class TrinketCommandHandler implements CommandExecutor {
 
     private static final String USAGE = "Usage: /trinkets <give> <player> <trinket_name>";
 
@@ -46,10 +46,5 @@ public class TrinketCommandHandler implements CommandExecutor, TabCompleter {
                 player.sendMessage(ChatColor.RED + USAGE);
                 return true;
         }
-    }
-
-    @Override
-    public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] strings) {
-        return List.of();
     }
 }
