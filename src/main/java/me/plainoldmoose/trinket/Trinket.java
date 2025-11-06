@@ -1,6 +1,5 @@
 package me.plainoldmoose.trinket;
 
-import me.plainoldmoose.MoosesTrinkets;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -25,13 +24,13 @@ public class Trinket {
     }
 
     private ItemStack applyNamespaceKey(String displayName, Material material) {
-        ItemStack item = new ItemStack(material);
-        ItemMeta meta = item.getItemMeta();
+        ItemStack tempItem = new ItemStack(material);
+        ItemMeta meta = tempItem.getItemMeta();
         PersistentDataContainer data = meta.getPersistentDataContainer();
 
         data.set(key, PersistentDataType.STRING, displayName);
-        item.setItemMeta(meta);
-        return item;
+        tempItem.setItemMeta(meta);
+        return tempItem;
     }
 
     public NamespacedKey getKey() {

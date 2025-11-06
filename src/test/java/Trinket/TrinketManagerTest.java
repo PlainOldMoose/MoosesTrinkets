@@ -5,14 +5,11 @@ import me.plainoldmoose.trinket.TrinketManager;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockbukkit.mockbukkit.MockBukkit;
 import org.mockbukkit.mockbukkit.ServerMock;
-
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
