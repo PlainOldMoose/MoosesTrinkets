@@ -1,6 +1,7 @@
 package Trinket;
 
 import me.plainoldmoose.MoosesTrinkets;
+import me.plainoldmoose.command.TrinketCommandActualiser;
 import me.plainoldmoose.command.TrinketCommandHandler;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.Inventory;
@@ -14,12 +15,10 @@ import org.mockbukkit.mockbukkit.MockBukkit;
 import org.mockbukkit.mockbukkit.ServerMock;
 import org.mockbukkit.mockbukkit.entity.PlayerMock;
 
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrinketCommandTest {
-    TrinketCommandHandler tch = new TrinketCommandHandler();
+    TrinketCommandHandler tch = new TrinketCommandHandler(new TrinketCommandActualiser());
     private ServerMock server;
     private PlayerMock player;
     private Plugin plugin;
