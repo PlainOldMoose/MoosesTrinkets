@@ -1,8 +1,10 @@
 package me.plainoldmoose.trinket;
 
 import org.bukkit.Material;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class TrinketManager {
     private static TrinketManager instance = new TrinketManager();
@@ -23,5 +25,9 @@ public class TrinketManager {
 
     public Trinket get(String trinket) {
         return trinkets.get(trinket);
+    }
+
+    public List<String> getTrinketNameList() {
+        return trinkets.keySet().stream().toList();
     }
 }
